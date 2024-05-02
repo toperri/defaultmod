@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./index.js"></script>
+    <title>DefaultMod</title>
+</head>
+
+<body>
+    <div class="container" style="justify-content: left; display: flex;">
+        <div class="navbar" id="nav">
+            <div class="titlebar" style="justify-content: left;">
+                <b><p style="font-size: large;">DefaultMod</p></b>
+            </div>
+
+            <p></p>
+            
+            <div id="defaultAppList">
+                <p id="upperMT">Loading...</p>
+            </div>
+        </div>
+        <textarea class="textstuff" id="textstuff">
+        </textarea>
+    </div>
+</body>
+
+<style>
+    .textstuff {
+        width: 78%;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        height: 95vh;
+        background-color: #e6e6e6;
+        border-radius: 10px;
+    }
+    p, button {
+        margin-left: 10px;
+    }
+
+    button {
+        border: none;
+        border-radius: 15px;
+        width: 20px;
+        min-width: 95%;
+        background-color: #dcdcdc;
+        cursor: pointer;
+    }
+    .navbar {
+        min-width: 20%;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        overflow-y: auto;
+        margin-left: 10px;
+        height: 98vh;
+        background-color: #e6e6e6;
+        border-radius: 10px;
+    }
+    @font-face {
+        font-family: 'SF Pro';
+        src: url('./sanfrancisco.ttf');
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+    * {
+        font-family: 'SF Pro';
+    }
+    body {
+        overflow: hidden;
+        margin: 0;
+    }
+</style>
+</html>
