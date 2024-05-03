@@ -22,3 +22,4 @@ Ctrl+M to modify field.
 
 - DefaultMod doesn't support editing directly from the textbox.
 - Some domains that are shown don't have any data. Can be resolved but at the cost of a less performant domain loading system.
+- In the repository, it can't seem to get rid of .DS_Store files.
