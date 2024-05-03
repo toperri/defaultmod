@@ -16,16 +16,28 @@
 
             <p></p>
             
-            <div id="defaultAppList">
-                <p id="upperMT">Loading...</p>
+            <div class="apps">
+                <div class="amc">
+                    <button class="amcB" onclick="addDefault()">+</button>
+                    <button class="amcB" onclick="removeDefault()">-</button>
+                </div>
+                <div id="defaultAppList">
+                    <p id="upperMT">Loading...</p>
+                </div>
             </div>
         </div>
-        <textarea class="textstuff" id="textstuff">
+        <textarea readonly="true" class="textstuff" id="textstuff">
         </textarea>
     </div>
 </body>
 
 <style>
+    input {
+        width: 95%;
+        background-color: #dcdcdc;
+        border-radius: 10px;
+        border: none;
+    }
     .textstuff {
         width: 78%;
         margin-top: 15px;
@@ -35,15 +47,19 @@
         background-color: #e6e6e6;
         border-radius: 10px;
     }
-    p, button {
+    p, button, input {
         margin-left: 10px;
     }
 
-    button {
+    .amcB {
+        border: 1px solid black;
+        background-color: #dcdcdc;
+        cursor: pointer;
+    }
+
+    .button {
         border: none;
         border-radius: 15px;
-        width: 20px;
-        min-width: 95%;
         background-color: #dcdcdc;
         cursor: pointer;
     }

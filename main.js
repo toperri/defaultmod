@@ -41,51 +41,31 @@ app.get('/loadApp',(req,res) => {
             res.send(stderr);
         } else {
             if (stdout) {
-                res.send('SERVERSIDE ERROR: could not read defaults for ' + req.query.app);
+                res.send("Oof! The backend dudes can't get what you want. Here's what they said:\n\n\n" + stdout);
             }
         }
     });
 });
 
-var hbReceived = false;
-var hbi = null
-var heartbeats = 1; // give mercy
-app.get('/hb/stop',(req,res) => {
-    clearInterval(hbi);
-    hbReceived = false;
-    heartbeats = 1;
-    console.log('stopped heartbeat.');
-    res.send('OK');
-});
-app.get('/hb/ping',(req,res) => {
-    heartbeats += 1;
-    res.send('cc');
-});
-app.get('/hb/start',(req,res) => {
-    if (!hbReceived)
-    {
-        console.log('heartbeating request received. closing endpoint.');
-        hbi = setInterval(function () {
-            heartbeats--;
-            if (heartbeats > 5)
-            {
-                heartbeats = 5;
-            }
-            if (heartbeats < 0)
-            {
-                console.log('heartbeating stopped, closing app');
-                process.exit(0);
-            }
-        },86);
-        hbReceived = true;
-        res.send('OK');
-    }
-    else
-    {
-        res.send('NO');
-    }
+app.get('/backend/close', (req, res) => {
+    console.log('received!');
+    res.send('ok');
 });
 
+app.get('/deleteApp', (req, res) => {
+    var app = req.query.app;
+
+    exec('defaults delete ' + app, (stdout, stderr) => {
+        if (stderr == '' && stdout == null)
+        {
+            res.send('OK');
+        }
+        else
+        {
+            res.send('ERROR//' + stderr + ' ' + stdout);
+        }
+    });
+});
 app.get('/writeDefaults', (req, res) => {
     var { where, what, appPacket } = JSON.parse(atob(req.query.data));
     if (!where || !what)
@@ -96,11 +76,11 @@ app.get('/writeDefaults', (req, res) => {
         exec('defaults write ' + appPacket + ' ' + where + ' ' + what, (stdout, stderr) => {
             if (stderr == '' && stdout == null)
             {
-                res.send('Default written successfully.');
+                res.send('The app packet was written successfully.');
             }
             else
             {
-                res.send('Error while writing default: ' + stderr + ' ' + stdout);
+                res.send('Error while writing the app packet: ' + stderr + ' ' + stdout);
             }
         });
     });
