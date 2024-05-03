@@ -2,12 +2,23 @@
 
 Defaults editor for Mac.
 
-It's a web app that opens a server instead of using Electron.
+Instead of using Electron, this app creates a server and opens your browser.
 
 # How to open
 
-Later i'll post a prepackaged .app, but for now do this:
+*Run these commands:*
 
-1) Install express
-2) Acquire a ttf for SF Pro font and move it into the static folder with name SFProFont.ttf
-3) Do npm test
+```
+cd /PATH/TO/DEFAULTMOD
+npm install express
+npm test
+```
+
+# Keybinds
+
+Ctrl+M to modify field.
+
+# Known issues
+
+- DefaultMod doesn't support editing directly from the textbox.
+- Some domains that are shown don't have any data. Can be resolved but at the cost of a less performant domain loading system.
