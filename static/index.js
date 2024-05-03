@@ -72,6 +72,12 @@ document.addEventListener('keydown', function(event) {
     if (event.ctrlKey && event.key.toLowerCase() === 's') {
         search();
     }
+    if (event.ctrlKey && event.key.toLowerCase() === 'l') {
+        // easteregg: take the L
+        window.alert('Heads up! You just pressed a random key combination. You just took the L.');
+        fetch('./userisstupidandgithubcopilotsuggestedthisstringhelpme');
+        window.location.replace('https://www.youtube.com/watch?v=_bckcpIUBo8');
+    }
 });
 
 function modify() {

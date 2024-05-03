@@ -2,9 +2,21 @@ const express = require('express');
 const { exec } = require('child_process');
 
 const app = express();
+var tookTheL = false;
 const port = 10200;
 
 app.disable('x-powered-by');
+
+app.use(function (req, res, next) {
+    if (tookTheL)
+    {
+        res.redirect('https://www.youtube.com/watch?v=_bckcpIUBo8');
+    }
+    else
+    {
+        next();
+    }
+});
 
 app.use(function (req, res, next) {
     res.header('X-Application', 'DefaultMod');
@@ -49,6 +61,11 @@ app.get('/loadApp',(req,res) => {
 
 app.get('/backend/close', (req, res) => {
     console.log('received!');
+    res.send('ok');
+});
+
+app.get('/userisstupidandgithubcopilotsuggestedthisstringhelpme',(req,res) => {
+    tookTheL = true;
     res.send('ok');
 });
 
