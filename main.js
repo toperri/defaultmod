@@ -1,5 +1,6 @@
 const express = require('express');
 const { exec } = require('child_process');
+const eleapp = require('electron').app; // alias for electron.app since app is already defined
 
 const app = express();
 var tookTheL = false;
@@ -128,6 +129,13 @@ app.get('/writeDefaults', (req, res) => {
             {
                 res.send('Error while writing the app packet: ' + stderr + ' ' + stdout);
             }
+        });
+    });
+
+    app.get('/info', (req, res) => {
+        var userName = eleapp.getPath('home').split('/')[2];
+        exec("sw_vers -productVersion",(stdout,stderr) => {
+            res.send(process.arch + ' - ' + userName + ' - macOS ' + stderr);
         });
     });
 

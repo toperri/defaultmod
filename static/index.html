@@ -23,6 +23,7 @@
                 <div id="defaultAppList">
                     <p id="upperMT">Loading...</p>
                 </div>
+                <i><p id="info">Running on macOS</p></i>
             </div>
         </div>
         <textarea readonly="true" class="textstuff" id="textstuff">
@@ -69,11 +70,14 @@
         background-color: #dcdcdc;
         cursor: pointer;
     }
+    #defaultAppList {
+        overflow-y: auto;
+        height: 85vh;
+    }
     .navbar {
         min-width: 20%;
         margin-top: 15px;
         margin-bottom: 10px;
-        overflow-y: auto;
         margin-left: 10px;
         height: 98vh;
         background-color: #e6e6e6;

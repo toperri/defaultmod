@@ -162,3 +162,7 @@ function removeDefault()
         }
     });
 }
+
+fetch('./info').then(r => r.text()).then(function (res) {
+    document.getElementById('info').innerHTML = res;
+});
