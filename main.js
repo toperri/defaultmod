@@ -47,7 +47,13 @@ app.get('/loadApp',(req,res) => {
     {
         res.status(400).send('no app query field');
     }
-    exec('defaults read ' + req.query.app, (stdout, stderr) => {
+
+    if (req.query.app.includes('&&') || req.query.app.includes(';') || req.query.app.includes('"'))
+    {
+        res.status(400).send('Security fault detected in request. Might be a hacking attempt.');
+        return;
+    }
+    exec('defaults read "' + req.query.app + '"', (stdout, stderr) => {
         if (stderr) {
             res.header('X-Error','yes');
             res.send(stderr);
@@ -93,7 +99,15 @@ app.get('/writeDefaults', (req, res) => {
         exec('defaults write ' + appPacket + ' ' + where + ' ' + what, (stdout, stderr) => {
             if (stderr == '' && stdout == null)
             {
-                res.send('The app packet was written successfully.');
+                if (appPacket == 'com.apple.dock')
+                {
+                    exec('killall Dock');
+                    res.send('The Dock setting was written successfully.');
+                }
+                else
+                {
+                    res.send('The app packet was written successfully.');
+                }
             }
             else
             {
