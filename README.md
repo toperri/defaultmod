@@ -6,7 +6,7 @@ Instead of using Electron, this app creates a server and opens your browser.
 
 # How to open
 
-*Run these commands:*
+*Before running, please download a TTF of the San Francisco font by Apple (not included for copyright reasons) and move it into the ```static``` folder with name ```sanfrancisco.ttf```*
 
 ```
 cd /PATH/TO/DEFAULTMOD
