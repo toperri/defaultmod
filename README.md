@@ -2,7 +2,7 @@
 
 Defaults editor for Mac.
 
-Instead of using Electron, this app creates a server and opens your browser.
+This app uses Electron, but the actual app contents are opened in the browser because Electron security is hard to manage and the browser is an isolated context apart from few endpoints for actually reading/setting app packet settings, which are secured against some type of attack discovered by me.
 
 # How to open
 
