@@ -30,7 +30,7 @@ function makeButton(name) {
     li.className = 'button';
     li.innerHTML = (name == 'com.apple.dock' && dockSecured ? name + ' (DANGER)' : name);
     li.onclick = function () {
-        li.style.backgroundColor = '#3733b5';
+        li.style.backgroundColor = '#3f638b';
         li.style.color = 'white';
         if (selectedButton)
         {
@@ -58,7 +58,7 @@ function makeButton(name) {
 
 fetch('./getApps').then(r => r.json()).then(function (res) {
     document.getElementById('upperMT').innerHTML = "";
-    var arr = res.output.trim().split(',');
+    var arr = res.output;
 
     arr.forEach(function (item) {
         makeButton(item.trim());

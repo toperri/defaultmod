@@ -33,7 +33,9 @@ app.use('/', express.static('static'));
 app.get('/getApps', (req, res) => {
     exec('defaults domains', (stdout, stderr) => {
         if (stderr) {
-            res.json({output: stderr});
+            var array = stderr.trim().split(',');
+
+            res.json({output: array});
         } else {
             if (stdout) {
                 res.json({output: stdout});
@@ -41,6 +43,7 @@ app.get('/getApps', (req, res) => {
         }
     });
 });
+
 
 app.get('/loadApp',(req,res) => {
     if (!req.query.app)
