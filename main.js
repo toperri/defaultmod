@@ -87,7 +87,7 @@ app.get('/deleteApp', (req, res) => {
         return;
     }
 
-    exec('defaults delete ' + app, (stdout, stderr) => {
+    exec('defaults delete "' + app + "", (stdout, stderr) => {
         if (stderr == '' && stdout == null)
         {
             res.send('OK');
@@ -111,7 +111,7 @@ app.get('/writeDefaults', (req, res) => {
         return;
     }
 
-        exec('defaults write ' + appPacket + ' ' + where + ' ' + what, (stdout, stderr) => {
+        exec('defaults write "' + appPacket + '" "' + where + '" "' + what + '"', (stdout, stderr) => {
             if (stderr == '' && stdout == null)
             {
                 if (appPacket == 'com.apple.dock')
