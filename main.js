@@ -78,6 +78,12 @@ app.get('/userisstupidandgithubcopilotsuggestedthisstringhelpme',(req,res) => {
 app.get('/deleteApp', (req, res) => {
     var app = req.query.app;
 
+    if (req.query.app.includes('&&') || req.query.app.includes(';') || req.query.app.includes('"'))
+    {
+        res.status(400).send('Security fault detected in request. Might be a hacking attempt.');
+        return;
+    }
+
     exec('defaults delete ' + app, (stdout, stderr) => {
         if (stderr == '' && stdout == null)
         {
@@ -94,6 +100,12 @@ app.get('/writeDefaults', (req, res) => {
     if (!where || !what)
     {
         res.status(400).send('no where or what field');
+    }
+
+    if (where.includes('&&') || where.includes(';') || where.includes('"') || what.includes('&&') || what.includes(';') || what.includes('"') || appPacket.includes('&&') || appPacket.includes(';') || appPacket.includes('"'))
+    {
+        res.status(400).send('Security fault detected in request. Might be a hacking attempt.');
+        return;
     }
 
         exec('defaults write ' + appPacket + ' ' + where + ' ' + what, (stdout, stderr) => {
