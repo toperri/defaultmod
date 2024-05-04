@@ -88,7 +88,7 @@ app.get('/deleteApp', (req, res) => {
         return;
     }
 
-    exec('defaults delete "' + app + "", (stdout, stderr) => {
+    exec('defaults delete "' + app + '"', (stdout, stderr) => {
         if (stderr == '' && stdout == null)
         {
             res.send('OK');
