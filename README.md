@@ -23,6 +23,12 @@ Ctrl+M to modify field.
 - DefaultMod doesn't support editing directly from the textbox.
 - Some app packets that are shown don't have any data. Can be resolved but at the cost of a less performant domain loading system.
 
+# TO DO
+
+- Encrypt data using AES or a custom crafted encryption method. (The way it would work is that the server would add into the HTML page the encryption key, so basically end-to-end encryption). This would delete support for multiple instances and page refreshing though.
+- Add support for writing directly in the textbox and auto-saving in local storage.
+- Encrypt the local storage with a key stored on the cookie.
+
 # How to disable Dock protection (NOT RECCOMENDED)
 The app automatically enables a layer of security for the Dock app packet, disallowing any modification besides removing the app packet entirely (which only resets the Dock to its default settings)
 
